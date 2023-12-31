@@ -14,6 +14,20 @@ class SnakeGame(Widget):
 
         self.direction = 'up'
         self.snake_speed = 12
+
+        Window.bind(on_key_down=self.on_key_down)
+    
+
+
+    def on_key_down(self, instance, keyboard, keycode, text, modifiers):
+        if text == 'w':
+            self.direction = 'up'
+        elif text == 's':
+            self.direction = 'down'
+        elif text == 'a':
+            self.direction = 'left'
+        elif text == 'd':
+            self.direction = 'right'
    
 
 class SnakeApp(App):
