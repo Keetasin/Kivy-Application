@@ -5,6 +5,8 @@ from kivy.core.window import Window
 
 
 class SnakeGame(Widget):
+    def __init__(self, *args, **kwargs):
+        super(SnakeGame, self).__init__(**kwargs)
     pass
 
 
