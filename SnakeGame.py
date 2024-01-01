@@ -3,6 +3,8 @@ from kivy.uix.widget import Widget
 from kivy.uix.gridlayout import GridLayout
 from kivy.core.window import Window
 from kivy.clock import Clock
+from kivy.graphics import Rectangle, Color
+
 
 
 
@@ -46,6 +48,14 @@ class SnakeGame(Widget):
             x += self.snake_size
 
         self.snake_pos.insert(0, (x, y))
+        self.draw_snake()
+
+    def draw_snake(self):
+        with self.canvas:
+            Color(0, 1, 0)
+            for pos in self.snake_pos:
+                Rectangle(pos=(pos[0], pos[1]), size=(self.snake_size, self.snake_size))
+
 
 
    
