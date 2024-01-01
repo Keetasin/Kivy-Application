@@ -2,6 +2,9 @@ from kivy.app import App
 from kivy.uix.widget import Widget
 from kivy.uix.gridlayout import GridLayout
 from kivy.core.window import Window
+from kivy.clock import Clock
+
+
 
 
 class SnakeGame(Widget):
@@ -16,7 +19,8 @@ class SnakeGame(Widget):
         self.snake_speed = 12
 
         Window.bind(on_key_down=self.on_key_down)
-    
+        Clock.schedule_interval(self.update, 1.0 / self.snake_speed)
+
 
 
     def on_key_down(self, instance, keyboard, keycode, text, modifiers):
@@ -28,6 +32,8 @@ class SnakeGame(Widget):
             self.direction = 'left'
         elif text == 'd':
             self.direction = 'right'
+
+
    
 
 class SnakeApp(App):
