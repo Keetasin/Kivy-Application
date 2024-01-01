@@ -33,6 +33,20 @@ class SnakeGame(Widget):
         elif text == 'd':
             self.direction = 'right'
 
+    def update(self, dt):
+        # Update snake position
+        x, y = self.snake_pos[0]
+        if self.direction == 'up':
+            y += self.snake_size
+        elif self.direction == 'down':
+            y -= self.snake_size
+        elif self.direction == 'left':
+            x -= self.snake_size
+        elif self.direction == 'right':
+            x += self.snake_size
+
+        self.snake_pos.insert(0, (x, y))
+
 
    
 
