@@ -4,7 +4,7 @@ from kivy.uix.gridlayout import GridLayout
 from kivy.core.window import Window
 from kivy.clock import Clock
 from kivy.graphics import Rectangle, Color
-
+import random
 
 
 
@@ -23,7 +23,7 @@ class SnakeGame(Widget):
         Window.bind(on_key_down=self.on_key_down)
         Clock.schedule_interval(self.update, 1.0 / self.snake_speed)
 
-
+        self.spawn_food()
 
     def on_key_down(self, instance, keyboard, keycode, text, modifiers):
         if text == 'w':
@@ -46,18 +46,30 @@ class SnakeGame(Widget):
             x -= self.snake_size
         elif self.direction == 'right':
             x += self.snake_size
-            
+
         x %= 480
         y %= 480
 
         self.snake_pos.insert(0, (x, y))
         self.draw_snake()
+        self.spawn_food()
 
     def draw_snake(self):
         with self.canvas:
             Color(0, 1, 0)
             for pos in self.snake_pos:
                 Rectangle(pos=(pos[0], pos[1]), size=(self.snake_size, self.snake_size))
+
+    def spawn_food(self):
+        x = random.randint(0, 19) * self.snake_size
+        y = random.randint(0, 19) * self.snake_size
+        
+        while (x, y) in self.snake_pos:
+            x = random.randint(0, 19) * self.snake_size
+            y = random.randint(0, 19) * self.snake_size
+        
+        self.food_pos = (x, y)
+        print(self.food_pos)
 
 
 
