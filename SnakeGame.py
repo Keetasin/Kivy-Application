@@ -46,6 +46,9 @@ class SnakeGame(Widget):
             x -= self.snake_size
         elif self.direction == 'right':
             x += self.snake_size
+            
+        x %= 480
+        y %= 480
 
         self.snake_pos.insert(0, (x, y))
         self.draw_snake()
