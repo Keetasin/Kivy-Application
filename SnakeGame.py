@@ -57,6 +57,7 @@ class SnakeGame(Widget):
         self.snake_pos.insert(0, (x, y))
 
         if self.check_collision_with_food(x, y):
+            self.snake_grow()
             self.spawn_food()  
         else:
             self.snake_pos.pop()
@@ -91,8 +92,20 @@ class SnakeGame(Widget):
         self.food_pos = (x, y)
 
     def check_collision_with_food(self, x, y):
-        # Check for collision with food
         return (x, y) == self.food_pos
+    
+    def snake_grow(self):
+        x, y = self.snake_pos[-1]
+        if self.direction == 'up':
+            y -= self.snake_size
+        elif self.direction == 'down':
+            y += self.snake_size
+        elif self.direction == 'left':
+            x += self.snake_size
+        elif self.direction == 'right':
+            x -= self.snake_size
+
+        self.snake_pos.append((x, y))
     
 
 
