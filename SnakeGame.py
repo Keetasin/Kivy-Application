@@ -61,6 +61,9 @@ class SnakeGame(Widget):
             self.spawn_food()  
         else:
             self.snake_pos.pop()
+        
+        if self.check_collision(x, y, self.snake_pos[1:]):
+            print('crash')
 
 
         self.canvas.clear()
@@ -91,6 +94,13 @@ class SnakeGame(Widget):
         
         self.food_pos = (x, y)
 
+    def check_collision(self, x, y, positions):
+        for pos in positions:
+            if pos == (x, y):
+                return True
+
+        return False
+
     def check_collision_with_food(self, x, y):
         return (x, y) == self.food_pos
     
@@ -106,6 +116,8 @@ class SnakeGame(Widget):
             x -= self.snake_size
 
         self.snake_pos.append((x, y))
+
+
     
 
 
