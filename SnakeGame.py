@@ -50,11 +50,17 @@ class SnakeGame(Widget):
         elif self.direction == 'right':
             x += self.snake_size
 
-        # Wrap around if the snake hits the boundary
+
         x %= 480
         y %= 480
 
         self.snake_pos.insert(0, (x, y))
+
+        if self.check_collision_with_food(x, y):
+            self.spawn_food()  
+        else:
+            self.snake_pos.pop()
+
 
         self.canvas.clear()
         self.draw_snake()
@@ -83,6 +89,10 @@ class SnakeGame(Widget):
             y = random.randint(0, 19) * self.snake_size
         
         self.food_pos = (x, y)
+
+    def check_collision_with_food(self, x, y):
+        # Check for collision with food
+        return (x, y) == self.food_pos
     
 
 
