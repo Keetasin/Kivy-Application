@@ -5,9 +5,11 @@ from kivy.core.window import Window
 from kivy.clock import Clock
 from kivy.graphics import Rectangle, Color
 import random
+from kivy.properties import NumericProperty
 
 
 class SnakeGame(Widget):
+    score = NumericProperty(0)
  
 
 
@@ -57,8 +59,10 @@ class SnakeGame(Widget):
         self.snake_pos.insert(0, (x, y))
 
         if self.check_collision_with_food(x, y):
+            self.score += 1
             self.snake_grow()
             self.spawn_food()  
+            print(f"Score: {self.score}")
         else:
             self.snake_pos.pop()
         
@@ -125,6 +129,8 @@ class SnakeGame(Widget):
         self.snake_speed = 12
         Clock.unschedule(self.update)
         Clock.schedule_interval(self.update, 1.0 / self.snake_speed)
+
+        self.score = 0
 
 
     
