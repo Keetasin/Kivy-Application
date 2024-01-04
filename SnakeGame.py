@@ -6,6 +6,10 @@ from kivy.clock import Clock
 from kivy.graphics import Rectangle, Color
 import random
 from kivy.properties import NumericProperty
+from kivy.uix.popup import Popup
+from kivy.uix.label import Label
+
+
 
 
 class SnakeGame(Widget):
@@ -25,6 +29,13 @@ class SnakeGame(Widget):
 
         Clock.schedule_interval(self.update, 1.0 / self.snake_speed)
         Window.bind(on_key_down=self.on_key_down)
+
+        self.popup = Popup (
+            title="Game Over",
+            content=Label(text=f"score: {self.score}"),
+            size_hint=(None, None),
+            size=(400, 400)
+        )
 
         self.spawn_food() 
 
@@ -63,11 +74,14 @@ class SnakeGame(Widget):
             self.snake_grow()
             self.spawn_food()  
             print(f"Score: {self.score}")
+            self.popup.content = Label(text=f"Score: {self.score}")
+
         else:
             self.snake_pos.pop()
         
         if self.check_collision(x, y, self.snake_pos[1:]):
             self.reset_game()
+            self.popup.open()
 
 
         self.canvas.clear()
