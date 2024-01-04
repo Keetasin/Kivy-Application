@@ -63,7 +63,7 @@ class SnakeGame(Widget):
             self.snake_pos.pop()
         
         if self.check_collision(x, y, self.snake_pos[1:]):
-            print('crash')
+            self.reset_game()
 
 
         self.canvas.clear()
@@ -116,6 +116,15 @@ class SnakeGame(Widget):
             x -= self.snake_size
 
         self.snake_pos.append((x, y))
+
+
+    def reset_game(self):
+        self.snake_pos = [(100, 100), (100, 80), (100, 60)]
+        self.direction = 'up'
+
+        self.snake_speed = 12
+        Clock.unschedule(self.update)
+        Clock.schedule_interval(self.update, 1.0 / self.snake_speed)
 
 
     
