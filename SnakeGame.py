@@ -74,7 +74,15 @@ class SnakeGame(Widget):
             self.snake_grow()
             self.spawn_food()  
             print(f"Score: {self.score}")
+
+            if self.score > 5 and self.score <=20:
+                self.snake_speed += (0.02*self.score)
+                Clock.unschedule(self.update)
+                Clock.schedule_interval(self.update, 1.0 / self.snake_speed)
+
             self.popup.content = Label(text=f"Score: {self.score}")
+
+            
 
         else:
             self.snake_pos.pop()
