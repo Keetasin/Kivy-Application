@@ -8,6 +8,8 @@ import random
 from kivy.properties import NumericProperty
 from kivy.uix.popup import Popup
 from kivy.uix.label import Label
+from kivy.core.audio import SoundLoader
+
 
 
 
@@ -26,6 +28,8 @@ class SnakeGame(Widget):
 
         self.direction = 'up'
         self.snake_speed = 12
+
+        self.sound1 = SoundLoader.load('gameover.mp3')
 
         Clock.schedule_interval(self.update, 1.0 / self.snake_speed)
         Window.bind(on_key_down=self.on_key_down)
@@ -95,6 +99,8 @@ class SnakeGame(Widget):
         if self.check_collision(x, y, self.snake_pos[1:]):
             self.reset_game()
             self.popup.open()
+            self.sound1.play()
+
 
 
         self.canvas.clear()
