@@ -12,13 +12,9 @@ from kivy.core.audio import SoundLoader
 
 
 
-
-
 class SnakeGame(Widget):
     score = NumericProperty(0)
  
-
-
     def __init__(self, **kwargs):
         super(SnakeGame, self).__init__(**kwargs)
 
@@ -28,11 +24,10 @@ class SnakeGame(Widget):
 
         self.direction = 'up'
         self.snake_speed = 12
-
         self.sound1 = SoundLoader.load('gameover.mp3')
-
         Clock.schedule_interval(self.update, 1.0 / self.snake_speed)
         Window.bind(on_key_down=self.on_key_down)
+        Window.bind(on_key_up=self.on_key_up)
 
         self.popup = Popup (
             title="Game Over",
@@ -43,6 +38,8 @@ class SnakeGame(Widget):
 
         self.spawn_food() 
 
+    def on_key_up(self, instance,x,y):
+        print('up')
 
     def on_key_down(self, instance, keyboard, keycode, text, modifiers):
         if text == 'w':
