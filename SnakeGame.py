@@ -1,6 +1,5 @@
 from kivy.app import App
 from kivy.uix.widget import Widget
-from kivy.uix.gridlayout import GridLayout
 from kivy.core.window import Window
 from kivy.clock import Clock
 from kivy.graphics import Rectangle, Color
@@ -9,6 +8,9 @@ from kivy.properties import NumericProperty
 from kivy.uix.popup import Popup
 from kivy.uix.label import Label
 from kivy.core.audio import SoundLoader
+from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.screenmanager import ScreenManager, Screen
+
 
 
 
@@ -16,6 +18,8 @@ class SnakeGame(Widget):
     score = NumericProperty(0)
  
     def __init__(self, **kwargs):
+        self.snake_speed = kwargs.pop("snake_speed")
+        self.speed_start = self.snake_speed 
         super(SnakeGame, self).__init__(**kwargs)
 
         self.snake_size = 20
@@ -23,7 +27,6 @@ class SnakeGame(Widget):
         self.food_pos = (Window.width // 2, Window.height // 2)
 
         self.direction = 'up'
-        self.snake_speed = 12
         self.sound1 = SoundLoader.load('gameover.mp3')
         Clock.schedule_interval(self.update, 1.0 / self.snake_speed)
         Window.bind(on_key_down=self.on_key_down)
@@ -31,7 +34,6 @@ class SnakeGame(Widget):
 
         self.popup = Popup (
             title="Game Over",
-            content=Label(text=f"score: {self.score}"),
             size_hint=(None, None),
             size=(400, 400)
         )
@@ -64,7 +66,6 @@ class SnakeGame(Widget):
         elif self.direction == 'right':
             x += self.snake_size
 
-
         x %= 480
         y %= 480
 
@@ -74,7 +75,6 @@ class SnakeGame(Widget):
             self.score += 1
             self.snake_grow()
             self.spawn_food()  
-            print(f"Score: {self.score}")
 
             if self.score > 5 and self.score <=20:
                 self.snake_speed += (0.02*self.score)
@@ -86,19 +86,14 @@ class SnakeGame(Widget):
             Clock.unschedule(self.update)
             Clock.schedule_interval(self.update, 1.0 / self.snake_speed)
 
-            self.popup.content = Label(text=f"Score: {self.score}")
-
-            
-
         else:
             self.snake_pos.pop()
         
         if self.check_collision(x, y, self.snake_pos[1:]):
-            self.reset_game()
+            self.popup.content = Label(text=f"Score: {self.score}")
             self.popup.open()
             self.sound1.play()
-
-
+            self.reset_game()
 
         self.canvas.clear()
         self.draw_snake()
@@ -162,20 +157,33 @@ class SnakeGame(Widget):
 
         self.score = 0
 
-
+class Menu(BoxLayout):
+    def __init__(self, *args, **kwargs):
+        self.manager = kwargs.pop("manager")
+        super().__init__(*args, **kwargs)
     
 
 
-class SnakeApp(App):
+class My_SnakeApp(App):
     def build(self):
-        box = GridLayout()
-        game = SnakeGame()
+        menu_screen = Screen(name="Menu Game")
+        Baby_screen = Screen(name="Baby Snake")
 
-        box.add_widget(game)
+        sm = ScreenManager()
+
+        menu_screen.add_widget(Menu(manager=sm))
+        Baby_screen.add_widget(SnakeGame(snake_speed=5))
+  
+        sm.add_widget(Baby_screen)
+        sm.add_widget(menu_screen)
+
+
+        sm.current = "Menu Game"
 
         Window.size = (400, 380)
-        Window.resizable = False  
-        return box
+        Window.resizable = False
+
+        return sm
 
 if __name__ == '__main__':
-    SnakeApp().run()
+    My_SnakeApp().run()
