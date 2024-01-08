@@ -180,6 +180,9 @@ class My_SnakeApp(App):
 
         sm.current = "Menu Game"
 
+        self.sound_open = SoundLoader.load('open.mp3')
+        self.sound_open.play()
+
         Window.size = (400, 380)
         Window.resizable = False
 
