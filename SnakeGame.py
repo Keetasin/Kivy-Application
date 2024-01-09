@@ -190,10 +190,16 @@ class Container(BoxLayout):
         # Add buttons to the GridLayout with CustomButton
         for path in image_paths:
             image = Image(source=path, size=(50, 50))  # Adjust size as needed
+            image.bind(on_touch_down=self.on_image_click)
             grid_layout.add_widget(image)
 
         # Add the GridLayout to the Container
         self.add_widget(grid_layout)
+
+    def on_image_click(self, instance, touch):
+        if instance.collide_point(*touch.pos):
+            if instance.source == 'King_cobra.jpg':
+                print("King cobra")
 
 class Menu(BoxLayout):
     def __init__(self, *args, **kwargs):
