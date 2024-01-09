@@ -165,15 +165,12 @@ class Menu(BoxLayout):
 class My_SnakeApp(App):
     def build(self):
         menu_screen = Screen(name="Menu Game")
+        name_screen = Screen(name="SnakeGame")
         Baby_screen = Screen(name="Baby Snake")
         Child_screen = Screen(name="Child Snake")
         Teenager_screen = Screen(name="Teenager Snake")
         Adult_screen = Screen(name="Adult Snake")
         super_screen = Screen(name="Super Snake")
-
-
-
-
 
         sm = ScreenManager()
 
@@ -184,20 +181,13 @@ class My_SnakeApp(App):
         Adult_screen.add_widget(SnakeGame(snake_speed=25))
         super_screen.add_widget(SnakeGame(snake_speed=100))
 
-
-
-
-  
         sm.add_widget(menu_screen)
+        sm.add_widget(name_screen)
         sm.add_widget(Baby_screen)
         sm.add_widget(Child_screen)
         sm.add_widget(Teenager_screen)
         sm.add_widget(Adult_screen)
         sm.add_widget(super_screen)
-
-
-
-
 
         sm.current = "Menu Game"
 
