@@ -11,15 +11,13 @@ from kivy.core.audio import SoundLoader
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.screenmanager import ScreenManager, Screen
 
-
-
-
 class SnakeGame(Widget):
     score = NumericProperty(0)
  
     def __init__(self, **kwargs):
         self.snake_speed = kwargs.pop("snake_speed")
         self.speed_start = self.snake_speed 
+        
         super(SnakeGame, self).__init__(**kwargs)
 
         self.snake_size = 20
@@ -151,7 +149,7 @@ class SnakeGame(Widget):
         self.snake_pos = [(100, 100), (100, 80), (100, 60)]
         self.direction = 'up'
 
-        self.snake_speed = 12
+        self.snake_speed = self.speed_start
         Clock.unschedule(self.update)
         Clock.schedule_interval(self.update, 1.0 / self.snake_speed)
 
@@ -168,14 +166,20 @@ class My_SnakeApp(App):
     def build(self):
         menu_screen = Screen(name="Menu Game")
         Baby_screen = Screen(name="Baby Snake")
+        Child_screen = Screen(name="Child Snake")
+
 
         sm = ScreenManager()
 
         menu_screen.add_widget(Menu(manager=sm))
         Baby_screen.add_widget(SnakeGame(snake_speed=5))
+        Child_screen.add_widget(SnakeGame(snake_speed=10))
+
   
         sm.add_widget(Baby_screen)
         sm.add_widget(menu_screen)
+        sm.add_widget(Child_screen)
+
 
 
         sm.current = "Menu Game"
