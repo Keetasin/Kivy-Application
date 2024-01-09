@@ -114,7 +114,7 @@ class SnakeGame(Widget):
 
     def draw_snake(self):
         with self.canvas:
-            Color(0, 1, 0)
+            Color(0, 1 - (max(0.25,self.score/30)), 0)
             for pos in self.snake_pos:
                 Rectangle(pos=(pos[0], pos[1]), size=(self.snake_size, self.snake_size))
 
