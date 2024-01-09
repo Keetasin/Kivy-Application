@@ -11,6 +11,8 @@ from kivy.core.audio import SoundLoader
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.gridlayout import GridLayout
+from kivy.uix.image import Image
+
 
 
 class SnakeGame(Widget):
@@ -175,7 +177,20 @@ class Container(BoxLayout):
         super(Container, self).__init__(*args, **kwargs)
 
         # Create GridLayout with a 5x5 grid
-        grid_layout = GridLayout()
+        grid_layout = GridLayout(cols=5, spacing=5)
+
+        image_paths = [
+            'King_cobra.jpg', 'Banded_Krait.jpg', 'Daboia_siamensis.jpg', 'Indochinese_spitting_cobra.jpg', 'Micrurus_fulvius.jpg',
+            'Calloselasma_rhodostoma.jpg', 'purpureomaculatus.jpg', 'Malayopython_reticulatus.jpg', 'Python_bivittatus.jpg', 'Boiga_cyanea.jpg',
+            'Xenopeltis_unicolor.jpg', 'Lycodon_aulicus.jpg', 'Pantherophis_alleghaniensis.jpg', 'Rhabdophis_subminiatus.jpg', 'Trimeresurus_purpureomaculatus.jpg',
+            'Trimeresurus_macrops.jpg', 'Trimeresurus_albolabris.jpg', 'Oligodon_fasciolatus.jpg', 'Ptyas_korros.jpg', 'Fowlea_Piscator.jpg',
+            'Flying_snakes.jpg', 'Coelognathus_radiatus.jpg', 'Malayan_Pit_viper.jpg', 'Boiga_siamensis.jpg', 'Russell’s_Viper.jpg'
+        ]
+
+        # Add buttons to the GridLayout with CustomButton
+        for path in image_paths:
+            image = Image(source=path, size=(50, 50))  # Adjust size as needed
+            grid_layout.add_widget(image)
 
         # Add the GridLayout to the Container
         self.add_widget(grid_layout)
