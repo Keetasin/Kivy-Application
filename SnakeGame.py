@@ -204,6 +204,54 @@ class Container(BoxLayout):
         if instance.collide_point(*touch.pos):
             if instance.source == 'King_cobra.jpg':
                 self.data_popup.content=Label(text="King cobra")
+            if instance.source == 'Banded_Krait.jpg':
+                self.data_popup.content=Label(text="Banded Krait")
+            if instance.source == 'Daboia_siamensis.jpg':
+                self.data_popup.content=Label(text="Daboia siamensis")
+            if instance.source == 'Indochinese_spitting_cobra.jpg':
+                self.data_popup.content=Label(text="Indochinese spitting cobra")
+            if instance.source == 'Micrurus_fulvius.jpg':
+                self.data_popup.content=Label(text="Micrurus fulvius")
+            if instance.source == 'Calloselasma_rhodostoma.jpg':
+                self.data_popup.content=Label(text="Calloselasma rhodostoma")
+            if instance.source == 'purpureomaculatus.jpg':
+                self.data_popup.content=Label(text="purpureomaculatus")
+            if instance.source == 'Malayopython_reticulatus.jpg':
+                self.data_popup.content=Label(text="Malayopython reticulatus")
+            if instance.source == 'Python_bivittatus.jpg':
+                self.data_popup.content=Label(text="Python bivittatus")
+            if instance.source == 'Boiga_cyanea.jpg':
+                self.data_popup.content=Label(text="Boiga cyanea")
+            if instance.source == 'Xenopeltis_unicolor.jpg':
+                self.data_popup.content=Label(text="Xenopeltis unicolor")
+            if instance.source == 'Lycodon_aulicus.jpg':
+                self.data_popup.content=Label(text="Lycodon aulicus")
+            if instance.source == 'Pantherophis_alleghaniensis.jpg':
+                self.data_popup.content=Label(text="Pantherophis alleghaniensis")
+            if instance.source == 'Rhabdophis_subminiatus.jpg':
+                self.data_popup.content=Label(text="Rhabdophis subminiatus")
+            if instance.source == 'Trimeresurus_purpureomaculatus.jpg':
+                self.data_popup.content=Label(text="Trimeresurus purpureomaculatus")
+            if instance.source == 'Trimeresurus_macrops.jpg':
+                self.data_popup.content=Label(text="Trimeresurus macrops")
+            if instance.source == 'Trimeresurus_albolabris.jpg':
+                self.data_popup.content=Label(text="Trimeresurus albolabris")
+            if instance.source == 'Oligodon_fasciolatus.jpg':
+                self.data_popup.content=Label(text="Oligodon_fasciolatus")
+            if instance.source == 'Ptyas_korros.jpg':
+                self.data_popup.content=Label(text="Ptyas korros")
+            if instance.source == 'Fowlea_Piscator.jpg':
+                self.data_popup.content=Label(text="Fowlea Piscator")
+            if instance.source == 'Flying_snakes.jpg':
+                self.data_popup.content=Label(text="Flying snakes")
+            if instance.source == 'Coelognathus_radiatus.jpg':
+                self.data_popup.content=Label(text="Coelognathus radiatus")
+            if instance.source == 'Malayan_Pit_viper.jpg':
+                self.data_popup.content=Label(text="Malayan Pit viper")
+            if instance.source == 'Boiga_siamensis.jpg':
+                self.data_popup.content=Label(text="Boiga siamensis")
+            if instance.source == 'Russell’s_Viper.jpg':
+                self.data_popup.content=Label(text="Russell’s Viper")
 
         self.data_popup.open()
 
