@@ -169,6 +169,8 @@ class My_SnakeApp(App):
         Child_screen = Screen(name="Child Snake")
         Teenager_screen = Screen(name="Teenager Snake")
         Adult_screen = Screen(name="Adult Snake")
+        super_screen = Screen(name="Super Snake")
+
 
 
 
@@ -180,15 +182,18 @@ class My_SnakeApp(App):
         Child_screen.add_widget(SnakeGame(snake_speed=10))
         Teenager_screen.add_widget(SnakeGame(snake_speed=18))
         Adult_screen.add_widget(SnakeGame(snake_speed=25))
+        super_screen.add_widget(SnakeGame(snake_speed=100))
+
 
 
 
   
-        sm.add_widget(Baby_screen)
         sm.add_widget(menu_screen)
+        sm.add_widget(Baby_screen)
         sm.add_widget(Child_screen)
         sm.add_widget(Teenager_screen)
         sm.add_widget(Adult_screen)
+        sm.add_widget(super_screen)
 
 
 
