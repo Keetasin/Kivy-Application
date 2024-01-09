@@ -195,11 +195,17 @@ class Container(BoxLayout):
 
         # Add the GridLayout to the Container
         self.add_widget(grid_layout)
+        self.data_popup = Popup(
+            title="Data Snake",
+            size_hint=(None, None),
+            size=(400, 400),)
 
     def on_image_click(self, instance, touch):
         if instance.collide_point(*touch.pos):
             if instance.source == 'King_cobra.jpg':
-                print("King cobra")
+                self.data_popup.content=Label(text="King cobra")
+
+        self.data_popup.open()
 
 class Menu(BoxLayout):
     def __init__(self, *args, **kwargs):
