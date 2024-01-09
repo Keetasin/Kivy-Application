@@ -10,6 +10,8 @@ from kivy.uix.label import Label
 from kivy.core.audio import SoundLoader
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.screenmanager import ScreenManager, Screen
+from kivy.uix.gridlayout import GridLayout
+
 
 class SnakeGame(Widget):
     score = NumericProperty(0)
@@ -167,6 +169,17 @@ class SnakeGame(Widget):
 
         self.score = 0
 
+
+class Container(BoxLayout):
+    def __init__(self, *args, **kwargs):
+        super(Container, self).__init__(*args, **kwargs)
+
+        # Create GridLayout with a 5x5 grid
+        grid_layout = GridLayout()
+
+        # Add the GridLayout to the Container
+        self.add_widget(grid_layout)
+
 class Menu(BoxLayout):
     def __init__(self, *args, **kwargs):
         self.manager = kwargs.pop("manager")
@@ -183,23 +196,27 @@ class My_SnakeApp(App):
         Teenager_screen = Screen(name="Teenager Snake")
         Adult_screen = Screen(name="Adult Snake")
         super_screen = Screen(name="Super Snake")
+        data_screen = Screen(name="Data Snake")
 
         sm = ScreenManager()
 
         menu_screen.add_widget(Menu(manager=sm))
-        Baby_screen.add_widget(SnakeGame(snake_speed=5))
-        Child_screen.add_widget(SnakeGame(snake_speed=10))
-        Teenager_screen.add_widget(SnakeGame(snake_speed=18))
-        Adult_screen.add_widget(SnakeGame(snake_speed=25))
         super_screen.add_widget(SnakeGame(snake_speed=100))
+        Adult_screen.add_widget(SnakeGame(snake_speed=25))
+        Teenager_screen.add_widget(SnakeGame(snake_speed=18))
+        Child_screen.add_widget(SnakeGame(snake_speed=10))
+        Baby_screen.add_widget(SnakeGame(snake_speed=5))
+        data_screen.add_widget(Container())
+        
 
         sm.add_widget(menu_screen)
         sm.add_widget(name_screen)
-        sm.add_widget(Baby_screen)
-        sm.add_widget(Child_screen)
-        sm.add_widget(Teenager_screen)
-        sm.add_widget(Adult_screen)
         sm.add_widget(super_screen)
+        sm.add_widget(Adult_screen)
+        sm.add_widget(Teenager_screen)
+        sm.add_widget(Child_screen)
+        sm.add_widget(Baby_screen)
+        sm.add_widget(data_screen)
 
         sm.current = "Menu Game"
 
