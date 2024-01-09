@@ -1,22 +1,34 @@
-
 <Menu>:
   orientation: 'vertical'
   Label:
     text: "SnakeGame"
     font_size: "50sp"
+    color: (0, 0.5, 0, 1)
     
-  Button:
-    text: "Baby Snake"
-    on_press: root.manager.current = 'Baby Snake'
-  Button:
-    text: "Child Snake"
-    on_press: root.manager.current = 'Child Snake' 
-  Button:
-    text:"Teenager Snake"
-    on_press: root.manager.current = 'Teenager Snake'
-  Button:
-    text: "Adult Snake"
-    on_press: root.manager.current = 'Adult Snake' 
   Button:
     text: "Super Snake"
     on_press: root.manager.current = 'Super Snake'
+    background_color: (0,0.2,0,1)
+  Button:
+    text: "Adult Snake"
+    on_press: root.manager.current = 'Adult Snake' 
+    background_color: (0,0.4,0,1)
+  Button:
+    text:"Teenager Snake"
+    on_press: root.manager.current = 'Teenager Snake'
+    background_color: (0,0.6,0,1)
+  Button:
+    text: "Child Snake"
+    on_press: root.manager.current = 'Child Snake' 
+    background_color: (0,0.8,0,1)
+  Button:
+    text: "Baby Snake"
+    on_press: root.manager.current = 'Baby Snake'
+    background_color: (0,1,0,1)
+  Button:
+    text: "Data Snake"
+    on_press: root.manager.current = 'Data Snake'
+    background_color: (0,0,0,1)
+
+
+
