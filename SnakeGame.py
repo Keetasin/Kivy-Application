@@ -43,13 +43,25 @@ class SnakeGame(Widget):
 
     def on_key_down(self, instance, keyboard, keycode, text, modifiers):
         if text == 'w':
-            self.direction = 'up'
+            if self.direction == 'down':
+                self.direction = 'down'
+            else:
+                self.direction = 'up'
         elif text == 's':
-            self.direction = 'down'
+            if self.direction == 'up':
+                self.direction = 'up'
+            else:
+                self.direction = 'down'
         elif text == 'a':
-            self.direction = 'left'
+            if self.direction == 'right':
+                self.direction = 'right'
+            else:
+                self.direction = 'left'
         elif text == 'd':
-            self.direction = 'right'
+            if self.direction == 'left':
+                self.direction = 'left'
+            else:
+                self.direction = 'right'
 
 
     def update(self, dt):
