@@ -50,7 +50,7 @@ pip install kivy
 ```
   ### Running the Application
 
-  - Clone the repository or download the source code.
+  - Clone the repository or download the source code (SnakeGame.py and My_Snake.kv) all .jpg file and all .mp3 file.
   - Navigate to the directory containing the project files.
   - Run the SnakeGame.py file:
   
