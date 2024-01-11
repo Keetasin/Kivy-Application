@@ -37,7 +37,7 @@ the application provides a Snake game with multiple difficulty levels and an add
   - Click on a snake image to view information about that snake species.
     
  #### Exiting the Game:
- -You can close the game window to exit the application.
+ - You can close the game window to exit the application.
 
 ## Installation
   ### Dependencies
