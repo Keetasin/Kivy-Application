@@ -1,30 +1,45 @@
+# Define the Menu class with a vertical BoxLayout
 <Menu>:
   orientation: 'vertical'
+
+  # Label displaying the title of the game
   Label:
     text: "SnakeGame"
     font_size: "50sp"
     color: (0, 0.5, 0, 1)
-    
+  
+
+  # Button for Super Snake level, changes the current screen to 'Super Snake' when pressed
   Button:
     text: "Super Snake"
     on_press: root.manager.current = 'Super Snake'
     background_color: (0,0.2,0,1)
+
+  # Button for Adult Snake level, changes the current screen to 'Adult Snake' when pressed
   Button:
     text: "Adult Snake"
     on_press: root.manager.current = 'Adult Snake' 
     background_color: (0,0.4,0,1)
+
+  # Button for Teenager Snake level, changes the current screen to 'Teenager Snake' when pressed
   Button:
     text:"Teenager Snake"
     on_press: root.manager.current = 'Teenager Snake'
     background_color: (0,0.6,0,1)
+
+  # Button for Child Snake level, changes the current screen to 'Child Snake' when pressed
   Button:
     text: "Child Snake"
     on_press: root.manager.current = 'Child Snake' 
     background_color: (0,0.8,0,1)
+
+  # Button for Baby Snake level, changes the current screen to 'Baby Snake' when pressed
   Button:
     text: "Baby Snake"
     on_press: root.manager.current = 'Baby Snake'
     background_color: (0,1,0,1)
+
+  # Button for selecting the "Data Snake" screen , Change the current screen to 'Data Snake' when pressed
   Button:
     text: "Data Snake"
     on_press: root.manager.current = 'Data Snake'
